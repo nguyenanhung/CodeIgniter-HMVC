@@ -1,0 +1,29 @@
+{
+    "name": "nguyenanhung/codeigniter-hmvc",
+    "type": "library",
+    "description": "CodeIgniter-HMVC",
+    "keywords": [
+        "telco",
+        "vas",
+        "detect",
+        "msisdn"
+    ],
+    "homepage": "https://github.com/nguyenanhung/CodeIgniter-HMVC",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Nguyen An Hung",
+            "email": "dev@nguyenanhung.com",
+            "homepage": "https://nguyenanhung.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "nguyenanhung\\CodeIgniter\\HMVC\\": "src/"
+        }
+    }
+}
