@@ -15,12 +15,14 @@ spl_autoload_register(function ($className) {
     }
     $fileName = __DIR__ . DIRECTORY_SEPARATOR . $fileName . $className . '.php';
     //
-    if (strpos($fileName, 'nguyenanhung\ThuDoMultimediaVasForSctv\Interfaces') !== FALSE) {
-        $fileName = str_replace('nguyenanhung\ThuDoMultimediaVasForSctv\Interfaces', 'src\Interfaces', $fileName);
-    } elseif (strpos($fileName, 'nguyenanhung\ThuDoMultimediaVasForSctv\Repository') !== FALSE) {
-        $fileName = str_replace('nguyenanhung\ThuDoMultimediaVasForSctv\Repository', 'src\Repository', $fileName);
+    if (strpos($fileName, 'nguyenanhung\CodeIgniter\HMVC\Interfaces') !== FALSE) {
+        $fileName = str_replace('nguyenanhung\CodeIgniter\HMVC\Interfaces', 'src\Interfaces', $fileName);
+    } elseif (strpos($fileName, 'nguyenanhung\CodeIgniter\HMVC\Hmvc') !== FALSE) {
+        $fileName = str_replace('nguyenanhung\CodeIgniter\HMVC\Hmvc', 'src\Hmvc', $fileName);
+    } elseif (strpos($fileName, 'nguyenanhung\CodeIgniter\HMVC\Repository') !== FALSE) {
+        $fileName = str_replace('nguyenanhung\CodeIgniter\HMVC\Repository', 'src\Repository', $fileName);
     } else {
-        $fileName = str_replace('nguyenanhung\ThuDoMultimediaVasForSctv', 'src', $fileName);
+        $fileName = str_replace('nguyenanhung\CodeIgniter\HMVC', 'src', $fileName);
     }
 
     if (file_exists($fileName)) {
