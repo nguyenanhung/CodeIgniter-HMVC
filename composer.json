@@ -3,10 +3,15 @@
     "type": "library",
     "description": "CodeIgniter-HMVC",
     "keywords": [
-        "telco",
-        "vas",
-        "detect",
-        "msisdn"
+        "codeigniter3",
+        "hmvc",
+        "hmvc-bundle",
+        "hmvc-extention",
+        "vietnamese",
+        "vendor",
+        "opensource",
+        "php",
+        "modular-extensions"
     ],
     "homepage": "https://github.com/nguyenanhung/CodeIgniter-HMVC",
     "license": "GPL-3.0",
