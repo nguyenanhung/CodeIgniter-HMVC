@@ -63,11 +63,17 @@ Any loaded module controller can then be used like a library, ie:
 
 All module controllers are accessible from the URL via module/controller/method or simply module/method if the module and controller names match. If you add the _remap() method to your controllers you can prevent unwanted access to them from the URL and redirect or flag an error as you like.
 
-### Use:
+## How to use:
 
 I am custom library, now config same rule below
 
-create file ***application/core/MY_Loader.php*** with content
+#### Install with composer
+
+```shell
+composer require nguyenanhung/codeigniter-hmvc
+```
+
+and create file ***application/core/MY_Loader.php*** with content
 
 ```php
 <?php
@@ -79,7 +85,7 @@ class MY_Loader extends BaseLoader
 }
 ```
 
-create file **application/core/MY_Router.php** with content
+and file **application/core/MY_Router.php** with content
 
 ```php
 <?php
