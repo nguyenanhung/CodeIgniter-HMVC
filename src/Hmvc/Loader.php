@@ -1,5 +1,7 @@
 <?php
-(defined('BASEPATH')) OR exit('No direct script access allowed');
+
+namespace nguyenanhung\CodeIgniter\HMVC\Hmvc;
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Modular Extensions - HMVC
@@ -38,8 +40,8 @@
 class MX_Loader extends CI_Loader
 {
     protected $_module;
-    public    $_ci_plugins     = array();
-    public    $_ci_cached_vars = array();
+    public    $_ci_plugins     = [];
+    public    $_ci_cached_vars = [];
 
     /** Initialize the loader variables **/
     public function initialize($controller = NULL)
@@ -58,7 +60,7 @@ class MX_Loader extends CI_Loader
         } else {
             parent::initialize();
             /* autoload module items */
-            $this->_autoloader(array());
+            $this->_autoloader([]);
         }
         /* add this module path to the loader variables */
         $this->_add_module_paths($this->_module);
@@ -96,7 +98,7 @@ class MX_Loader extends CI_Loader
     }
 
     /** Load a module helper **/
-    public function helper($helper = array())
+    public function helper($helper = [])
     {
         if (is_array($helper)) return $this->helpers($helper);
         if (isset($this->_ci_helpers[$helper])) return;
@@ -109,7 +111,7 @@ class MX_Loader extends CI_Loader
     }
 
     /** Load an array of helpers **/
-    public function helpers($helpers = array())
+    public function helpers($helpers = [])
     {
         foreach ($helpers as $_helper) $this->helper($_helper);
 
@@ -207,9 +209,9 @@ class MX_Loader extends CI_Loader
     {
         if (is_array($module)) return $this->modules($module);
         $_alias           = strtolower(basename($module));
-        CI::$APP->$_alias = Modules::load(array(
+        CI::$APP->$_alias = Modules::load([
                                               $module => $params
-                                          ));
+                                          ]);
 
         return $this;
     }
@@ -246,28 +248,28 @@ class MX_Loader extends CI_Loader
     }
 
     /** Load a module view **/
-    public function view($view, $vars = array(), $return = FALSE)
+    public function view($view, $vars = [], $return = FALSE)
     {
         list($path, $_view) = Modules::find($view, $this->_module, 'views/');
         if ($path != FALSE) {
-            $this->_ci_view_paths = array(
+            $this->_ci_view_paths = [
                                         $path => TRUE
-                                    ) + $this->_ci_view_paths;
+                                    ] + $this->_ci_view_paths;
             $view                 = $_view;
         }
         // return $this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
         if (method_exists($this, '_ci_object_to_array')) {
-            return $this->_ci_load(array(
+            return $this->_ci_load([
                                        '_ci_view'   => $view,
                                        '_ci_vars'   => $this->_ci_prepare_view_vars($vars),
                                        '_ci_return' => $return
-                                   ));
+                                   ]);
         } else {
-            return $this->_ci_load(array(
+            return $this->_ci_load([
                                        '_ci_view'   => $view,
                                        '_ci_vars'   => $this->_ci_prepare_view_vars($vars),
                                        '_ci_return' => $return
-                                   ));
+                                   ]);
         }
     }
 
@@ -348,11 +350,11 @@ class MX_Loader extends CI_Loader
             }
         }
         /* autoload helpers, plugins, languages */
-        foreach (array(
+        foreach ([
                      'helper',
                      'plugin',
                      'language'
-                 ) as $type) {
+                 ] as $type) {
             if (isset($autoload[$type])) {
                 foreach ($autoload[$type] as $item) {
                     $this->$type($item);
@@ -371,9 +373,9 @@ class MX_Loader extends CI_Loader
                 /* autoload database */
                 if (!$db = CI::$APP->config->item('database')) {
                     $this->database();
-                    $autoload['libraries'] = array_diff($autoload['libraries'], array(
+                    $autoload['libraries'] = array_diff($autoload['libraries'], [
                         'database'
-                    ));
+                    ]);
                 }
             }
             /* autoload libraries */

@@ -1,7 +1,9 @@
 <?php
-(defined('BASEPATH')) OR exit('No direct script access allowed');
+
+namespace nguyenanhung\CodeIgniter\HMVC\Hmvc;
+defined('BASEPATH') OR exit('No direct script access allowed');
 /* load the MX core module class */
-require dirname(__FILE__) . '/Modules.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Modules.php';
 
 /**
  * Modular Extensions - HMVC
@@ -46,7 +48,7 @@ class MX_Router extends CI_Router
         return $this->module;
     }
 
-    protected function _set_request($segments = array())
+    protected function _set_request($segments = [])
     {
         if ($this->translate_uri_dashes === TRUE) {
             foreach (range(0, 2) as $v) {
@@ -176,11 +178,11 @@ class MX_Router extends CI_Router
             // Are module/directory/controller/method segments being specified?
             $sgs = sscanf($_route, '%[^/]/%[^/]/%[^/]/%s', $module, $directory, $class, $method);
             // set the module/controller directory location if found
-            if ($this->locate(array(
+            if ($this->locate([
                                   $module,
                                   $directory,
                                   $class
-                              ))) {
+                              ])) {
                 //reset to class/method
                 switch ($sgs) {
                     case 1:

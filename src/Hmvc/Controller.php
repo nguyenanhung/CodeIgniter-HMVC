@@ -1,7 +1,9 @@
 <?php
-(defined('BASEPATH')) OR exit('No direct script access allowed');
+
+namespace nguyenanhung\CodeIgniter\HMVC\Hmvc;
+defined('BASEPATH') OR exit('No direct script access allowed');
 /** load the CI class for Modular Extensions **/
-require dirname(__FILE__) . '/Base.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Base.php';
 
 /**
  * Modular Extensions - HMVC
@@ -39,7 +41,7 @@ require dirname(__FILE__) . '/Base.php';
  **/
 class MX_Controller
 {
-    public $autoload = array();
+    public $autoload = [];
 
     public function __construct()
     {
