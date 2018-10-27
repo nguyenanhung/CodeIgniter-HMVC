@@ -1,6 +1,7 @@
 <?php
 
 namespace nguyenanhung\CodeIgniter\HMVC\Hmvc;
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
@@ -261,7 +262,7 @@ class MX_Loader extends CI_Loader
         if (method_exists($this, '_ci_object_to_array')) {
             return $this->_ci_load([
                                        '_ci_view'   => $view,
-                                       '_ci_vars'   => $this->_ci_prepare_view_vars($vars),
+                                       '_ci_vars'   => $this->_ci_object_to_array($vars),
                                        '_ci_return' => $return
                                    ]);
         } else {
@@ -311,7 +312,7 @@ class MX_Loader extends CI_Loader
             include($_ci_path);
         }
         log_message('debug', 'File loaded: ' . $_ci_path);
-        if ($_ci_return == TRUE) return ob_get_clean();
+        if (isset($_ci_return) && $_ci_return == TRUE) return ob_get_clean();
         if (ob_get_level() > $this->_ci_ob_level + 1) {
             ob_end_flush();
         } else {
